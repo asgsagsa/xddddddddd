@@ -62,10 +62,11 @@ def scrobble_batch(batch, start_number, max_retries=3):
 
 
 canciones = [
-    {"artist": "Deffici1e", "track": "throwback", "album": "throwback"},
-    {"artist": "Deffici1e", "track": "throwback", "album": "throwback"},
-    {"artist": "Deffici1e", "track": "throwback", "album": "throwback"},
-    {"artist": "Deffici1e", "track": "throwback", "album": "throwback"},
+    {"artist": "Deffici1e", "track": "enamored with dread", "album": "enamored with dread"},
+    {"artist": "Deffici1e", "track": "enamored with dread", "album": "enamored with dread"},
+    {"artist": "Deffici1e", "track": "enamored with dread", "album": "enamored with dread"},
+    {"artist": "Deffici1e", "track": "enamored with dread", "album": "enamored with dread"},
+
 
 ]
 
