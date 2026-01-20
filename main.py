@@ -5,7 +5,6 @@ from datetime import datetime, timedelta, timezone
 
 warnings.filterwarnings("ignore")
 
-# Zona horaria Argentina
 ART = timezone(timedelta(hours=-3))
 
 API_KEY = '49452d64180d104ac22e571cc5d0c0f0'
@@ -20,8 +19,8 @@ network = pylast.LastFMNetwork(
     password_hash=PASSWORD_HASH
 )
 
-TARGET = 3000          # 🎯 scrobbles diarios
-BATCH_DELAY = 2.5      # segundos entre batches
+TARGET = 3000          
+BATCH_DELAY = 2.5     
 
 def esperar_hasta_15():
     ahora = datetime.now(ART)
@@ -63,14 +62,14 @@ def scrobble_batch(batch, start_number, max_retries=3):
 
 
 canciones = [
-    {"artist": "Deffici1e", "track": ".co", "album": "Shake It Up"},
-    {"artist": "Deffici1e", "track": ".co", "album": "Shake It Up"},
-    {"artist": "Deffici1e", "track": ".co", "album": "Shake It Up"},
-    {"artist": "Deffici1e", "track": ".co", "album": "Shake It Up"},
+    {"artist": "Deffici1e", "track": "throwback", "album": "throwback"},
+    {"artist": "Deffici1e", "track": "throwback", "album": "throwback"},
+    {"artist": "Deffici1e", "track": "throwback", "album": "throwback"},
+    {"artist": "Deffici1e", "track": "throwback", "album": "throwback"},
+
 ]
 
 while True:
-    # ⏰ esperar horario
     esperar_hasta_15()
 
     print("▶ Iniciando scrobbleo diario (3K exactos)")
@@ -86,7 +85,6 @@ while True:
             index = 0
             continue
 
-        # ajustar batch para no pasarse de 3k
         batch = batch[:remaining]
 
         sent = scrobble_batch(batch, count)
