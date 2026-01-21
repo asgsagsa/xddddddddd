@@ -9,7 +9,7 @@ ART = timezone(timedelta(hours=-3))
 
 API_KEY = '49452d64180d104ac22e571cc5d0c0f0'
 API_SECRET = '4ff0c076a69291d506c761b7dfecd083'
-USERNAME = 'bt6'
+USERNAME = 'l0b'
 PASSWORD_HASH = pylast.md5('lukrobv1583_')
 
 network = pylast.LastFMNetwork(
@@ -62,10 +62,10 @@ def scrobble_batch(batch, start_number, max_retries=3):
 
 
 canciones = [
-    {"artist": "Deffici1e", "track": "enamored with dread", "album": "enamored with dread"},
-    {"artist": "Deffici1e", "track": "enamored with dread", "album": "enamored with dread"},
-    {"artist": "Deffici1e", "track": "enamored with dread", "album": "enamored with dread"},
-    {"artist": "Deffici1e", "track": "enamored with dread", "album": "enamored with dread"},
+    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
+    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
+    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
+    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
 
 
 ]
