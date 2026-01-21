@@ -58,7 +58,12 @@ ARTISTAS = [
         "track": "face Melting // she Love it",
         "album": "face Melting // she Love it"
     },
-  
+         {
+        "artist": "xaviersobased",
+        "track": "in the yo",
+        "album": "in the yo"
+    },
+
       {
         "artist": "Aeter",
         "track": "boyfriend",
@@ -109,11 +114,6 @@ ARTISTAS = [
         "artist": "Sexadlibs",
         "track": "my tongue tie d im trauma Tized",
         "album": "my tongue tie d im trauma Tized"
-    },
-       {
-        "artist": "piola",
-        "track": "media",
-        "album": "media"
     },
 
 
