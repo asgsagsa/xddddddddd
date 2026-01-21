@@ -23,61 +23,77 @@ TARGET = 3000
 BATCH_DELAY = 3.0
 
 ARTISTAS = [
-    {
-        "artist": "Lucy Bedroque",
-        "track": "TAKE ME BACK",
-        "album": "SISTERHOOD"
+         {
+        "artist": "Nightlight",
+        "track": "nada",
+        "album": "YFC"
     },
-    {
-        "artist": "OsamaSon",
-        "track": "Made Sum Plans",
-        "album": "Jump Out"
+     {
+        "artist": "moneynumbdapain",
+        "track": "carrera",
+        "album": "1IVINGSUFFER"
     },
-    {
-        "artist": "1oneam",
-        "track": "Vogue",
-        "album": "Vogue"
+
+        {
+        "artist": "naxowo",
+        "track": "nicki minaj",
+        "album": "nicki minaj"
     },
-    {
-        "artist": "elijxhwtf",
-        "track": "perc baby",
-        "album": "perc baby"
-    },
-    {
-        "artist": "Jaydes",
-        "track": "rose",
-        "album": "ghetto cupid"
-    },
-    {
-        "artist": "neva pray",
-        "track": "tuyo",
-        "album": "tuyo"
-    },
+    
     {
         "artist": "bleood",
         "track": "bugs are crawling under your skin",
         "album": "bugs are crawling under your skin"
     },
-    {
-        "artist": "Chief Keef",
-        "track": "Squad",
-        "album": "Finally Rich (Complete Edition)"
+
+        {
+        "artist": "neva pray",
+        "track": "tuyo",
+        "album": "tuyo"
     },
-    {
-        "artist": "Bladee",
-        "track": "Reality Surf",
-        "album": "333"
+  
+  
+       {
+        "artist": "suban",
+        "track": "face Melting // she Love it",
+        "album": "face Melting // she Love it"
     },
+  
+      {
+        "artist": "Aeter",
+        "track": "boyfriend",
+        "album": "boyfriend"
+    },
+        {
+        "artist": "Jaydes",
+        "track": "rose",
+        "album": "ghetto cupid"
+    },
+  
+    {
+        "artist": "Lucy Bedroque",
+        "track": "TAKE ME BACK",
+        "album": "SISTERHOOD"
+    },
+
+    {
+        "artist": "1oneam",
+        "track": "Vogue",
+        "album": "Vogue"
+    },
+
+    {
+        "artist": "elijxhwtf",
+        "track": "perc baby",
+        "album": "perc baby"
+    },
+
     {
         "artist": "Nettspend",
         "track": "Yoda",
         "album": "Yoda"
     },
-    {
-        "artist": "Aeter",
-        "track": "boyfriend",
-        "album": "boyfriend"
-    },
+
     {
         "artist": "xaviersobased",
         "track": "in the yo",
@@ -88,26 +104,19 @@ ARTISTAS = [
         "track": "right now",
         "album": "right now"
     },
-    {
-        "artist": "fakemink",
-        "track": "Music and Me",
-        "album": "Music and Me"
+
+       {
+        "artist": "Sexadlibs",
+        "track": "my tongue tie d im trauma Tized",
+        "album": "my tongue tie d im trauma Tized"
     },
-    {
-        "artist": "lemurya",
-        "track": "dragon negro prod tit1 coval",
-        "album": "saga fronta"
+       {
+        "artist": "piola",
+        "track": "media",
+        "album": "media"
     },
-    {
-        "artist": "slattuhs",
-        "track": "i really dont know @spazznn",
-        "album": "my hearts a putrid mess!"
-    },
-    {
-        "artist": "wifiskeleton",
-        "track": "loser club",
-        "album": "loser club"
-    }
+
+
 
 
 ]
