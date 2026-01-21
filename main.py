@@ -19,8 +19,98 @@ network = pylast.LastFMNetwork(
     password_hash=PASSWORD_HASH
 )
 
-TARGET = 3000          
-BATCH_DELAY = 2.5     
+TARGET = 3000
+BATCH_DELAY = 3.0
+
+ARTISTAS = [
+    {
+        "artist": "Lucy Bedroque",
+        "track": "TAKE ME BACK",
+        "album": "SISTERHOOD"
+    },
+    {
+        "artist": "OsamaSon",
+        "track": "Made Sum Plans",
+        "album": "Jump Out"
+    },
+    {
+        "artist": "1oneam",
+        "track": "Vogue",
+        "album": "Vogue"
+    },
+    {
+        "artist": "elijxhwtf",
+        "track": "perc baby",
+        "album": "perc baby"
+    },
+    {
+        "artist": "Jaydes",
+        "track": "rose",
+        "album": "ghetto cupid"
+    },
+    {
+        "artist": "neva pray",
+        "track": "tuyo",
+        "album": "tuyo"
+    },
+    {
+        "artist": "bleood",
+        "track": "bugs are crawling under your skin",
+        "album": "bugs are crawling under your skin"
+    },
+    {
+        "artist": "Chief Keef",
+        "track": "Squad",
+        "album": "Finally Rich (Complete Edition)"
+    },
+    {
+        "artist": "Bladee",
+        "track": "Reality Surf",
+        "album": "333"
+    },
+    {
+        "artist": "Nettspend",
+        "track": "Yoda",
+        "album": "Yoda"
+    },
+    {
+        "artist": "Aeter",
+        "track": "boyfriend",
+        "album": "boyfriend"
+    },
+    {
+        "artist": "xaviersobased",
+        "track": "in the yo",
+        "album": "in the yo"
+    },
+    {
+        "artist": "yuke",
+        "track": "right now",
+        "album": "right now"
+    },
+    {
+        "artist": "fakemink",
+        "track": "Music and Me",
+        "album": "Music and Me"
+    },
+    {
+        "artist": "lemurya",
+        "track": "dragon negro prod tit1 coval",
+        "album": "saga fronta"
+    },
+    {
+        "artist": "slattuhs",
+        "track": "i really dont know @spazznn",
+        "album": "my hearts a putrid mess!"
+    },
+    {
+        "artist": "wifiskeleton",
+        "track": "loser club",
+        "album": "loser club"
+    }
+
+
+]
 
 def esperar_hasta_15():
     ahora = datetime.now(ART)
@@ -33,15 +123,27 @@ def esperar_hasta_15():
     print(f"> Esperando hasta las 15:00 ART ({int(segundos)}s)")
     time.sleep(segundos)
 
+def artista_del_dia():
+    hoy = datetime.now(ART).date()
+    ayer = hoy - timedelta(days=1)
+
+    idx_hoy = hoy.toordinal() % len(ARTISTAS)
+    idx_ayer = ayer.toordinal() % len(ARTISTAS)
+
+    if idx_hoy == idx_ayer:
+        idx_hoy = (idx_hoy + 1) % len(ARTISTAS)
+
+    return ARTISTAS[idx_hoy]
+
 def scrobble_batch(batch, start_number, max_retries=3):
     timestamp = int(time.time())
     scrobbles = []
 
-    for i, track_data in enumerate(batch):
+    for i, track in enumerate(batch):
         scrobbles.append({
-            'artist': track_data['artist'],
-            'title': track_data['track'],
-            'album': track_data['album'],
+            'artist': track['artist'],
+            'title': track['track'],
+            'album': track['album'],
             'timestamp': timestamp + i
         })
 
@@ -60,38 +162,24 @@ def scrobble_batch(batch, start_number, max_retries=3):
 
     return 0
 
-
-canciones = [
-    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
-    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
-    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
-    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
-
-
-]
-
 while True:
     esperar_hasta_15()
 
-    print("▶ Iniciando scrobbleo diario (3K exactos)")
+    track_base = artista_del_dia()
+    print(f"🎵 Artista de hoy: {track_base['artist']}")
+
     sent_today = 0
     count = 1
-    index = 0
 
     while sent_today < TARGET:
         remaining = TARGET - sent_today
-        batch = canciones[index:index+2]
 
-        if not batch:
-            index = 0
-            continue
-
+        batch = [track_base, track_base]
         batch = batch[:remaining]
 
         sent = scrobble_batch(batch, count)
         sent_today += sent
         count += sent
-        index += 2
 
         print(f"> Total hoy: {sent_today}/{TARGET}")
 
