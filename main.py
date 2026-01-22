@@ -115,8 +115,16 @@ ARTISTAS = [
         "track": "my tongue tie d im trauma Tized",
         "album": "my tongue tie d im trauma Tized"
     },
-
-
+       {
+        "artist": "OsamaSon",
+        "track": "Ref",
+        "album": "Jump Out"
+    },
+       {
+        "artist": "prettifun",
+        "track": "Light",
+        "album": "Pretti"
+    },
 
 
 ]
