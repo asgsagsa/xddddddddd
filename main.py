@@ -29,6 +29,7 @@ ARTISTAS = [
     {"artist": "moneynumbdapain", "track": "carrera", "album": "1IVINGSUFFER"},
     {"artist": "naxowo", "track": "nicki minaj", "album": "nicki minaj"},
     {"artist": "1oneam", "track": "Vogue", "album": "Vogue"},
+    {"artist": "Bladee", "track": "Be Nice 2 Me", "album": "Icedancer"},
     {"artist": "unixzo", "track": "fashion whore", "album": "fashion whore"},
     {"artist": "zatru", "track": "all i wunna", "album": "all i wunna"},
     {"artist": "slattuhs", "track": "i will kill u w/ my fukin bare hands @fuckkekx", "album": "i will kill u w/ my fukin bare hands @fuckkekx"},
