@@ -1,9 +1,9 @@
-    import pylast
-    import time
-    import warnings
-    import json
-    from datetime import datetime, timedelta, timezone
-    from pathlib import Path
+import pylast
+import time
+import warnings
+import json
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
     warnings.filterwarnings("ignore")
 
