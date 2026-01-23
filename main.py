@@ -10,8 +10,8 @@ warnings.filterwarnings("ignore")
 ART = timezone(timedelta(hours=-3))
 STATE_FILE = Path("/data/state.json")
 
-API_KEY = "835ee3c2ba3d6d4e114989ac855179db"
-API_SECRET = "db646e5321c3c471312bea47f4d93ce2"
+API_KEY = "49452d64180d104ac22e571cc5d0c0f0"
+API_SECRET = "4ff0c076a69291d506c761b7dfecd083"
 USERNAME = "l0b"
 PASSWORD_HASH = pylast.md5("lukrobv1583_")
 
@@ -45,13 +45,14 @@ ARTISTAS = [
     {"artist": "Nightlight", "track": "nada", "album": "YFC"},
 ]
 
+
 def load_state():
     if STATE_FILE.exists():
         return json.loads(STATE_FILE.read_text())
     return {
         "artist_index": 0,
         "count": 0,
-        "date": str(datetime.now(ART).date())
+        "date": ""
     }
 
 def save_state(state):
@@ -63,7 +64,9 @@ def esperar_hasta_15():
     hoy_15 = ahora.replace(hour=15, minute=0, second=0, microsecond=0)
     if ahora >= hoy_15:
         hoy_15 += timedelta(days=1)
-    time.sleep((hoy_15 - ahora).total_seconds())
+    tiempo = (hoy_15 - ahora).total_seconds()
+    print(f"⏳ Esperando hasta las 15:00 ({int(tiempo)}s)")
+    time.sleep(tiempo)
 
 def scrobble(track, n):
     try:
@@ -79,8 +82,10 @@ def scrobble(track, n):
         if "Rate" in str(e) or "29" in str(e):
             print("🚫 RATE LIMIT — guardo estado y paro")
             return None
-        print("Error:", e)
+        print("❌ Error:", e)
         return False
+
+print("🚀 Scrobbler diario iniciado")
 
 while True:
     esperar_hasta_15()
@@ -92,10 +97,8 @@ while True:
         state["date"] = hoy
         state["count"] = 0
 
-    artist_index = state["artist_index"] % len(ARTISTAS)
-    track = ARTISTAS[artist_index]
-
-    print(f"\n🎵 Artista: {track['artist']} ({state['count']}/{TARGET})")
+    track = ARTISTAS[state["artist_index"] % len(ARTISTAS)]
+    print(f"🎵 Artista del día: {track['artist']}")
 
     while state["count"] < TARGET:
         res = scrobble(track, state["count"] + 1)
