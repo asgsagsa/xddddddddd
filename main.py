@@ -8,12 +8,12 @@ from pathlib import Path
 warnings.filterwarnings("ignore")
 
 ART = timezone(timedelta(hours=-3))
-STATE_FILE = Path("state.json")
+STATE_FILE = Path("/data/state.json")
 
-API_KEY = '49452d64180d104ac22e571cc5d0c0f0'
-API_SECRET = '4ff0c076a69291d506c761b7dfecd083'
-USERNAME = 'l0b'
-PASSWORD_HASH = pylast.md5('lukrobv1583_')
+API_KEY = "TU_API_KEY"
+API_SECRET = "TU_API_SECRET"
+USERNAME = "TU_USER"
+PASSWORD_HASH = pylast.md5("TU_PASSWORD")
 
 network = pylast.LastFMNetwork(
     api_key=API_KEY,
@@ -23,13 +23,16 @@ network = pylast.LastFMNetwork(
 )
 
 TARGET = 3000
-SCROBBLE_DELAY = 2.6  
+SCROBBLE_DELAY = 2.6
 
 ARTISTAS = [
     {"artist": "moneynumbdapain", "track": "carrera", "album": "1IVINGSUFFER"},
     {"artist": "naxowo", "track": "nicki minaj", "album": "nicki minaj"},
     {"artist": "1oneam", "track": "Vogue", "album": "Vogue"},
     {"artist": "unixzo", "track": "fashion whore", "album": "fashion whore"},
+    {"artist": "zatru", "track": "all i wunna", "album": "all i wunna"},
+    {"artist": "slattuhs", "track": "i will kill u w/ my fukin bare hands @fuckkekx", "album": "i will kill u w/ my fukin bare hands @fuckkekx"},
+    {"artist": "War6aw", "track": "on my soul", "album": "on my soul"},
     {"artist": "jaydes", "track": "rose", "album": "ghetto cupid"},
     {"artist": "Lucy Bedroque", "track": "TAKE ME BACK", "album": "SISTERHOOD"},
     {"artist": "bleood", "track": "bugs are crawling under your skin", "album": "bugs are crawling under your skin"},
@@ -47,9 +50,14 @@ ARTISTAS = [
 def load_state():
     if STATE_FILE.exists():
         return json.loads(STATE_FILE.read_text())
-    return {}
+    return {
+        "artist_index": 0,
+        "count": 0,
+        "date": str(datetime.now(ART).date())
+    }
 
 def save_state(state):
+    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     STATE_FILE.write_text(json.dumps(state))
 
 def esperar_hasta_15():
@@ -58,18 +66,6 @@ def esperar_hasta_15():
     if ahora >= hoy_15:
         hoy_15 += timedelta(days=1)
     time.sleep((hoy_15 - ahora).total_seconds())
-
-def artista_del_dia():
-    hoy = datetime.now(ART).date()
-    ayer = hoy - timedelta(days=1)
-
-    idx_hoy = hoy.toordinal() % len(ARTISTAS)
-    idx_ayer = ayer.toordinal() % len(ARTISTAS)
-
-    if idx_hoy == idx_ayer:
-        idx_hoy = (idx_hoy + 1) % len(ARTISTAS)
-
-    return ARTISTAS[idx_hoy]
 
 def scrobble(track, n):
     try:
@@ -91,23 +87,27 @@ def scrobble(track, n):
 # =====================
 
 while True:
+    esperar_hasta_15()
+
     state = load_state()
     hoy = str(datetime.now(ART).date())
-    track = artista_del_dia()
 
-    # nuevo día o primer run
-    if state.get("date") != hoy:
-        state = {
-            "date": hoy,
-            "artist": track["artist"],
-            "track": track,
-            "count": 0
-        }
+    # día nuevo → reset contador
+    if state["date"] != hoy:
+        state["date"] = hoy
+        state["count"] = 0
 
-    print(f"\n🎵 Artista del día: {state['artist']} ({state['count']}/{TARGET})")
+    artist_index = state["artist_index"] % len(ARTISTAS)
+    track = ARTISTAS[artist_index]
+
+    print(
+        f"\n🎵 Artista: {track['artist']} "
+        f"({state['count']}/{TARGET}) "
+        f"[#{artist_index + 1}]"
+    )
 
     while state["count"] < TARGET:
-        res = scrobble(state["track"], state["count"] + 1)
+        res = scrobble(track, state["count"] + 1)
 
         if res is None:
             save_state(state)
@@ -119,9 +119,9 @@ while True:
 
         time.sleep(SCROBBLE_DELAY)
 
-    print(f"✔ {state['count']} scrobbles hoy")
-
-    # dormir hasta mañana 15:00 ART
-    now = datetime.now(ART)
-    next_run = (now + timedelta(days=1)).replace(hour=15, minute=0, second=0, microsecond=0)
-    time.sleep((next_run - now).total_seconds())
+    # terminó los 3000 → siguiente artista
+    if state["count"] >= TARGET:
+        print(f"✔ {track['artist']} completado")
+        state["artist_index"] += 1
+        state["count"] = 0
+        save_state(state)
