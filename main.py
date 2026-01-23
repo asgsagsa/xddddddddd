@@ -10,8 +10,8 @@ warnings.filterwarnings("ignore")
 ART = timezone(timedelta(hours=-3))
 STATE_FILE = Path("/data/state.json")
 
-API_KEY = "49452d64180d104ac22e571cc5d0c0f0"
-API_SECRET = "4ff0c076a69291d506c761b7dfecd083"
+API_KEY = "835ee3c2ba3d6d4e114989ac855179db"
+API_SECRET = "db646e5321c3c471312bea47f4d93ce2"
 USERNAME = "l0b"
 PASSWORD_HASH = pylast.md5("lukrobv1583_")
 
