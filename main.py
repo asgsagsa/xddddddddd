@@ -2,6 +2,8 @@ import pylast
 import time
 import warnings
 import json
+import httpx
+import random
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -46,7 +48,6 @@ ARTISTAS = [
     {"artist": "Nightlight", "track": "nada", "album": "YFC"},
 ]
 
-
 def load_state():
     if STATE_FILE.exists():
         return json.loads(STATE_FILE.read_text())
@@ -69,22 +70,36 @@ def esperar_hasta_15():
     print(f"⏳ Esperando hasta las 15:00 ({int(tiempo)}s)")
     time.sleep(tiempo)
 
-def scrobble(track, n):
-    try:
-        network.scrobble(
-            artist=track["artist"],
-            title=track["track"],
-            album=track["album"],
-            timestamp=int(time.time())
-        )
-        print(f"[{n}] {track['artist']} - {track['track']}")
-        return True
-    except pylast.WSError as e:
-        if "Rate" in str(e) or "29" in str(e):
-            print("🚫 RATE LIMIT — guardo estado y paro")
-            return None
-        print("❌ Error:", e)
-        return False
+def scrobble(track, n, retries=4):
+    for attempt in range(retries):
+        try:
+            network.scrobble(
+                artist=track["artist"],
+                title=track["track"],
+                album=track["album"],
+                timestamp=int(time.time())
+            )
+            print(f"[{n}] {track['artist']} - {track['track']}")
+            return True
+
+        except pylast.WSError as e:
+            if "Rate" in str(e) or "29" in str(e):
+                print("🚫 RATE LIMIT — guardo estado y paro")
+                return None
+
+            print(f"❌ pylast error ({attempt+1}/{retries}): {e}")
+            time.sleep(5)
+
+        except httpx.ReadTimeout:
+            print(f"⏱ TIMEOUT ({attempt+1}/{retries}) — reintentando…")
+            time.sleep(5 + random.uniform(0, 3))
+
+        except Exception as e:
+            print(f"💥 Error raro ({attempt+1}/{retries}): {e}")
+            time.sleep(5)
+
+    print("⚠️ Falló después de varios intentos, sigo")
+    return False
 
 print("🚀 Scrobbler diario iniciado")
 
