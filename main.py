@@ -28,22 +28,24 @@ TARGET = 3000
 SCROBBLE_DELAY = 2.6
 
 ARTISTAS = [
-    {"artist": "moneynumbdapain", "track": "carrera", "album": "1IVINGSUFFER"},
-    {"artist": "naxowo", "track": "nicki minaj", "album": "nicki minaj"},
-    {"artist": "1oneam", "track": "Vogue", "album": "Vogue"},
-    {"artist": "Bladee", "track": "Be Nice 2 Me", "album": "Icedancer"},
-    {"artist": "unixzo", "track": "fashion whore", "album": "fashion whore"},
+        {"artist": "bleood", "track": "bugs are crawling under your skin", "album": "bugs are crawling under your skin"},
+    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
+
+        {"artist": "sexadlibs", "track": "my tongue tie d im trauma Tized", "album": "my tongue tie d im trauma Tized"},
+ {"artist": "unixzo", "track": "fashion whore", "album": "fashion whore"},
     {"artist": "zatru", "track": "all i wunna", "album": "all i wunna"},
     {"artist": "slattuhs", "track": "i will kill u w/ my fukin bare hands @fuckkekx", "album": "i will kill u w/ my fukin bare hands @fuckkekx"},
     {"artist": "War6aw", "track": "on my soul", "album": "on my soul"},
     {"artist": "jaydes", "track": "rose", "album": "ghetto cupid"},
+    {"artist": "moneynumbdapain", "track": "carrera", "album": "1IVINGSUFFER"},
+    {"artist": "naxowo", "track": "nicki minaj", "album": "nicki minaj"},
+    {"artist": "1oneam", "track": "Vogue", "album": "Vogue"},
+    {"artist": "Bladee", "track": "Be Nice 2 Me", "album": "Icedancer"},
+   
     {"artist": "Lucy Bedroque", "track": "TAKE ME BACK", "album": "SISTERHOOD"},
-    {"artist": "bleood", "track": "bugs are crawling under your skin", "album": "bugs are crawling under your skin"},
-    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
     {"artist": "suban", "track": "face Melting // she Love it", "album": "face Melting // she Love it"},
     {"artist": "xaviersobased", "track": "in the yo", "album": "in the yo"},
     {"artist": "yuke", "track": "iam goin", "album": "ian goin"},
-    {"artist": "sexadlibs", "track": "my tongue tie d im trauma Tized", "album": "my tongue tie d im trauma Tized"},
     {"artist": "Aeter", "track": "boyfriend", "album": "boyfriend"},
     {"artist": "Nightlight", "track": "nada", "album": "YFC"},
 ]
