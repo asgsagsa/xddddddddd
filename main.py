@@ -28,6 +28,7 @@ TARGET = 3000
 SCROBBLE_DELAY = 2.6
 
 ARTISTAS = [
+        {"artist": "vampireosamagang666", "track": "barbie", "album": "barbie"},
         {"artist": "bleood", "track": "bugs are crawling under your skin", "album": "bugs are crawling under your skin"},
     {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
         {"artist": "sexadlibs", "track": "my tongue tie d im trauma Tized", "album": "my tongue tie d im trauma Tized"},
