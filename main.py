@@ -30,7 +30,6 @@ SCROBBLE_DELAY = 2.6
 ARTISTAS = [
         {"artist": "bleood", "track": "bugs are crawling under your skin", "album": "bugs are crawling under your skin"},
     {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
-
         {"artist": "sexadlibs", "track": "my tongue tie d im trauma Tized", "album": "my tongue tie d im trauma Tized"},
  {"artist": "unixzo", "track": "fashion whore", "album": "fashion whore"},
     {"artist": "zatru", "track": "all i wunna", "album": "all i wunna"},
@@ -41,7 +40,6 @@ ARTISTAS = [
     {"artist": "naxowo", "track": "nicki minaj", "album": "nicki minaj"},
     {"artist": "1oneam", "track": "Vogue", "album": "Vogue"},
     {"artist": "Bladee", "track": "Be Nice 2 Me", "album": "Icedancer"},
-   
     {"artist": "Lucy Bedroque", "track": "TAKE ME BACK", "album": "SISTERHOOD"},
     {"artist": "suban", "track": "face Melting // she Love it", "album": "face Melting // she Love it"},
     {"artist": "xaviersobased", "track": "in the yo", "album": "in the yo"},
