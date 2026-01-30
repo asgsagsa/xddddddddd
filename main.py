@@ -28,10 +28,10 @@ TARGET = 3000
 SCROBBLE_DELAY = 2.6
 
 ARTISTAS = [
-        {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
-        {"artist": "bleood", "track": "bugs are crawling under your skin", "album": "bugs are crawling under your skin"},
-        {"artist": "sexadlibs", "track": "my tongue tie d im trauma Tized", "album": "my tongue tie d im trauma Tized"},
- {"artist": "unixzo", "track": "fashion whore", "album": "fashion whore"},
+    {"artist": "neva pray", "track": "tuyo", "album": "tuyo"},
+    {"artist": "bleood", "track": "bugs are crawling under your skin", "album": "bugs are crawling under your skin"},
+    {"artist": "sexadlibs", "track": "my tongue tie d im trauma Tized", "album": "my tongue tie d im trauma Tized"},
+    {"artist": "unixzo", "track": "fashion whore", "album": "fashion whore"},
     {"artist": "zatru", "track": "all i wunna", "album": "all i wunna"},
     {"artist": "slattuhs", "track": "i will kill u w/ my fukin bare hands @fuckkekx", "album": "i will kill u w/ my fukin bare hands @fuckkekx"},
     {"artist": "War6aw", "track": "on my soul", "album": "on my soul"},
@@ -45,7 +45,7 @@ ARTISTAS = [
     {"artist": "xaviersobased", "track": "in the yo", "album": "in the yo"},
     {"artist": "yuke", "track": "iam goin", "album": "ian goin"},
     {"artist": "Aeter", "track": "boyfriend", "album": "boyfriend"},
-            {"artist": "vampireosamagang666", "track": "barbie", "album": "barbie"},
+    {"artist": "vampireosamagang666", "track": "barbie", "album": "barbie"},
     {"artist": "Nightlight", "track": "nada", "album": "YFC"},
 ]
 
@@ -87,7 +87,6 @@ def scrobble(track, n, retries=4):
             if "Rate" in str(e) or "29" in str(e):
                 print("🚫 RATE LIMIT — guardo estado y paro")
                 return None
-
             print(f"❌ pylast error ({attempt+1}/{retries}): {e}")
             time.sleep(5)
 
@@ -104,11 +103,17 @@ def scrobble(track, n, retries=4):
 
 print("🚀 Scrobbler diario iniciado")
 
+ultimo_dia = ""
+
 while True:
-    esperar_hasta_15()
+    ahora = datetime.now(ART)
+    hoy = str(ahora.date())
+
+    if hoy != ultimo_dia:
+        esperar_hasta_15()
+        ultimo_dia = hoy
 
     state = load_state()
-    hoy = str(datetime.now(ART).date())
 
     if state["date"] != hoy:
         state["date"] = hoy
